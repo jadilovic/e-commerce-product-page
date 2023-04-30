@@ -1,5 +1,6 @@
 import Button from './Button';
 import ProductCard from './ProductCard';
+import '../styles/CartModal.css';
 
 const CartModal = () => {
 	return (

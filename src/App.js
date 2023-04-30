@@ -19,8 +19,8 @@ function App() {
 
 	return (
 		<div className="app-container">
-			<Navbar />
-			<CartModal />
+			<Navbar showCart={showCart} setShowCart={setShowCart} />
+			{showCart && <CartModal />}
 			<h1>E-commerce product page - sneakers</h1>
 		</div>
 	);
