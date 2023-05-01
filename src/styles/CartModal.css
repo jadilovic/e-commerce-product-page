@@ -9,6 +9,15 @@
 }
 
 .cart-modal-title {
+	color: black;
+	font-weight: 700;
 	padding: 1em;
 	border-bottom: 1px solid hsl(220, 14%, 75%);
+}
+
+.empty-cart {
+	height: 13em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

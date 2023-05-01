@@ -2,14 +2,28 @@ import Button from './Button';
 import ProductCard from './ProductCard';
 import '../styles/CartModal.css';
 
-const CartModal = () => {
+const CartModal = ({ cart, setCart }) => {
 	return (
 		<div className="cart-modal">
 			<div className="cart-modal-title">Cart</div>
-			<div className="cart-modal-products">
-				<ProductCard />
-			</div>
-			<Button />
+			{cart.length > 0 ? (
+				<div className="cart-modal-products">
+					{cart.map((product) => {
+						return (
+							<ProductCard
+								key={product.id}
+								product={product}
+								setCart={setCart}
+							/>
+						);
+					})}
+					<Button />
+				</div>
+			) : (
+				<div className="empty-cart">
+					<p>Your cart is empty</p>
+				</div>
+			)}
 		</div>
 	);
 };
