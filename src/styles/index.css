@@ -7,6 +7,7 @@ body {
 	font-family: 'Kumbh Sans', sans-serif;
 	display: flex;
 	justify-content: center;
+	position: relative;
 }
 
 #root {

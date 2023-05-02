@@ -17,7 +17,7 @@ const CartModal = ({ cart, setCart }) => {
 							/>
 						);
 					})}
-					<Button />
+					<Button text="Checkout" />
 				</div>
 			) : (
 				<div className="empty-cart">

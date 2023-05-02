@@ -10,6 +10,10 @@ import productImageThumb3 from './images/image-product-3-thumbnail.jpg';
 import productImage3 from './images/image-product-3.jpg';
 import productImageThumb4 from './images/image-product-4-thumbnail.jpg';
 import productImage4 from './images/image-product-4.jpg';
+import Images from './components/Images';
+import Description from './components/Description';
+import ImagesModal from './components/ImagesModal';
+import Overlay from './components/Overlay';
 
 function App() {
 	const [cart, setCart] = useState([]);
@@ -22,7 +26,7 @@ function App() {
 		price: 125,
 		discount: '50%',
 		prevPrice: '$250.00',
-		count: 0,
+		count: 3,
 		imagesThumbnails: [
 			productImageThumb1,
 			productImageThumb2,
@@ -32,6 +36,7 @@ function App() {
 		images: [productImage1, productImage2, productImage3, productImage4],
 	});
 	const [showCart, setShowCart] = useState(false);
+	const [showImageModal, setShowImageModal] = useState(false);
 
 	const handleAddToCart = () => {
 		setCart([sneakers]);
@@ -41,10 +46,31 @@ function App() {
 
 	return (
 		<div className="app-container">
-			<Navbar showCart={showCart} setShowCart={setShowCart} />
+			<Navbar showCart={showCart} setShowCart={setShowCart} cart={cart} />
 			{showCart && <CartModal cart={cart} setCart={setCart} />}
-			<h1>E-commerce product page - sneakers</h1>
-			<button onClick={handleAddToCart}>Add to Cart</button>
+			<main>
+				<Images
+					images={sneakers.images}
+					imagesThumbnails={sneakers.imagesThumbnails}
+					setShowImageModal={setShowImageModal}
+				/>
+				<Description
+					product={sneakers}
+					setProduct={setSneakers}
+					handleAddToCart={handleAddToCart}
+				/>
+			</main>
+			{showImageModal ? (
+				<ImagesModal
+					images={sneakers.images}
+					imagesThumbnails={sneakers.imagesThumbnails}
+					setShowImageModal={setShowImageModal}
+				/>
+			) : null}
+			<Overlay
+				isModalOpen={showImageModal}
+				setIsModalOpen={setShowImageModal}
+			/>
 		</div>
 	);
 }

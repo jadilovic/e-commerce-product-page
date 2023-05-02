@@ -1,5 +1,5 @@
 .cart-modal {
-	min-width: 25em;
+	min-width: 22em;
 	position: absolute;
 	top: 5em;
 	right: 1em;
@@ -20,4 +20,38 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.product-card {
+	color: hsl(219, 9%, 45%);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-width: 19em;
+	margin-bottom: 1.5em;
+}
+
+#card-img {
+	height: 3em;
+	border-radius: 0.3em;
+}
+
+.cart-modal-products {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1.5em;
+}
+
+.product-card-description {
+	text-transform: capitalize;
+}
+
+.product-card-cost {
+	text-transform: none;
+	padding-top: 0.3em;
+}
+
+#delete-product {
+	cursor: pointer;
 }
