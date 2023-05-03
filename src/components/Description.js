@@ -22,15 +22,17 @@ const Description = ({ product, setProduct, handleAddToCart }) => {
 	};
 
 	return (
-		<section>
+		<section className="description-container">
 			<h1>{product.brand}</h1>
 			<h2>{product.name}</h2>
 			<p className="product-description">{product.description}</p>
-			<article>
-				<span className="product-price">{product.price.toFixed(2)}</span>
-				<span className="product-discount">{product.discount}</span>
-			</article>
-			<p className="previous-price">{product.prevPrice}</p>
+			<div className="product-pricing">
+				<article>
+					<span className="product-price">{product.price.toFixed(2)}</span>
+					<span className="product-discount">{product.discount}</span>
+				</article>
+				<p className="previous-price">{product.prevPrice}</p>
+			</div>
 			<div className="product-selection">
 				<div className="product-count">
 					<img

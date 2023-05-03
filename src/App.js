@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import './styles/App.css';
 import CartModal from './components/CartModal';
@@ -37,15 +37,23 @@ function App() {
 	});
 	const [showCart, setShowCart] = useState(false);
 	const [showImageModal, setShowImageModal] = useState(false);
+	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+	useEffect(() => {
+		function handleResize() {
+			setScreenWidth(window.innerWidth);
+		}
+
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
 
 	const handleAddToCart = () => {
 		setCart([sneakers]);
 	};
 
-	console.log(cart);
-
 	return (
-		<div className="app-container">
+		<div onClick={() => setShowCart(false)} className="app-container">
 			<Navbar showCart={showCart} setShowCart={setShowCart} cart={cart} />
 			{showCart && <CartModal cart={cart} setCart={setCart} />}
 			<main>
@@ -53,6 +61,7 @@ function App() {
 					images={sneakers.images}
 					imagesThumbnails={sneakers.imagesThumbnails}
 					setShowImageModal={setShowImageModal}
+					screenWidth={screenWidth}
 				/>
 				<Description
 					product={sneakers}
@@ -70,7 +79,19 @@ function App() {
 			<Overlay
 				isModalOpen={showImageModal}
 				setIsModalOpen={setShowImageModal}
+				screenWidth={screenWidth}
 			/>
+			<div className="attribution">
+				Challenge by:{' '}
+				<a href="https://www.frontendmentor.io/challenges/ecommerce-product-page-UPsZ9MJp6">
+					Frontend Mentor - E-commerce Product Page
+				</a>
+				. Coded by:{' '}
+				<a href="https://www.frontendmentor.io/profile/jadilovic">
+					Jasmin Adilovic
+				</a>
+				.
+			</div>
 		</div>
 	);
 }

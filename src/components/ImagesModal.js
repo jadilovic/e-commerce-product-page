@@ -9,7 +9,7 @@ import '../styles/ImagesModal.css';
 
 const ImagesModal = ({ images, imagesThumbnails, setShowImageModal }) => {
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
-	const [isHovered, setIsHovered] = useState(false);
+	const [hoveredElement, setHoveredElement] = useState(null);
 
 	const handlePrevious = () => {
 		if (currentImageIndex > 0) {
@@ -30,11 +30,11 @@ const ImagesModal = ({ images, imagesThumbnails, setShowImageModal }) => {
 	return (
 		<div className="modal-container">
 			<img
-				onMouseEnter={() => setIsHovered(true)}
-				onMouseLeave={() => setIsHovered(false)}
+				onMouseEnter={(e) => setHoveredElement(e.target.className)}
+				onMouseLeave={() => setHoveredElement(null)}
 				className="close-icon"
 				onClick={() => setShowImageModal(false)}
-				src={isHovered ? closeIconOrange : closeIcon}
+				src={hoveredElement === 'close-icon' ? closeIconOrange : closeIcon}
 				alt="close icon"
 			/>
 			<div className="current-image-container">
@@ -44,18 +44,20 @@ const ImagesModal = ({ images, imagesThumbnails, setShowImageModal }) => {
 					alt="current img"
 				/>
 				<img
-					onMouseEnter={() => setIsHovered(true)}
-					onMouseLeave={() => setIsHovered(false)}
+					onMouseEnter={(e) => setHoveredElement(e.target.id)}
+					onMouseLeave={() => setHoveredElement(null)}
 					onClick={handlePrevious}
-					src={isHovered ? previousIconOrange : previousIcon}
+					src={
+						hoveredElement === 'previous' ? previousIconOrange : previousIcon
+					}
 					alt="previous icon"
 					id="previous"
 				/>
 				<img
-					onMouseEnter={() => setIsHovered(true)}
-					onMouseLeave={() => setIsHovered(false)}
+					onMouseEnter={(e) => setHoveredElement(e.target.id)}
+					onMouseLeave={() => setHoveredElement(null)}
 					onClick={handleNext}
-					src={isHovered ? nextIconOrange : nextIcon}
+					src={hoveredElement === 'next' ? nextIconOrange : nextIcon}
 					alt="next-icon"
 					id="next"
 				/>

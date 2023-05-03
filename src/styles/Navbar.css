@@ -22,9 +22,6 @@ nav {
 li {
 	color: hsl(219, 9%, 45%);
 	border-bottom: 3px solid transparent;
-}
-
-li {
 	cursor: pointer;
 }
 
@@ -40,7 +37,6 @@ li:not(:first-child):hover {
 
 .nav-profile-cart {
 	position: relative;
-	margin-top: 0.5em;
 	margin-right: 3em;
 	cursor: pointer;
 }
@@ -49,6 +45,7 @@ li:not(:first-child):hover {
 	height: 3em;
 	cursor: pointer;
 	border: 2px solid transparent;
+	margin-bottom: 0.5em;
 }
 
 .nav-profile-avatar:hover {
@@ -67,4 +64,74 @@ li:not(:first-child):hover {
 	width: 2em;
 	text-align: center;
 	border-radius: 50%;
+}
+
+#menu {
+	display: none;
+	height: 1.2em;
+	margin-bottom: 0.3em;
+}
+
+.link {
+	display: block;
+}
+
+.menu-links {
+	list-style-type: none;
+	position: absolute;
+	top: 0;
+	left: -14em;
+	width: 14em;
+	height: 100vh;
+	background-color: white;
+	padding: 1em 2em;
+	transition: left 0.3s ease-in-out;
+	z-index: 3;
+}
+
+.menu-link {
+	color: black;
+	font-size: 1em;
+	font-weight: 700;
+	line-height: 3em;
+	width: fit-content;
+}
+
+.menu-links :first-child {
+	padding: 0.3em 0 0.5em 0;
+}
+
+.active {
+	left: 0;
+}
+
+.close-icon-menu {
+	cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+	nav {
+		padding: 0 2em;
+		border-bottom: none;
+	}
+
+	#logo:hover {
+		border-bottom: 3px solid transparent;
+	}
+
+	.nav-links {
+		column-gap: 1em;
+	}
+
+	#menu {
+		display: block;
+	}
+
+	.link {
+		display: none;
+	}
+
+	.nav-profile-cart {
+		margin-right: 1.5em;
+	}
 }
